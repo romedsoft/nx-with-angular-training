@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
@@ -8,12 +10,14 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@romedsoft/ui';
+import { AccordionModule } from 'primeng/accordion';
+
 
 @NgModule({
     declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent],
     imports: [BrowserModule
         , RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })
-        ,UiModule
+        ,UiModule, AccordionModule, BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
