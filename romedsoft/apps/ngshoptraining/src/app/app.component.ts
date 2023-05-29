@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'romedsoft-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'ngshoptraining-root',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'ngshoptraining';
