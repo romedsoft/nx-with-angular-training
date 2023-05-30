@@ -13,8 +13,9 @@
     &-sidebar {
         position:fixed;
         width: 175px;
-        background-color: black;
+        background-color: var(--blue-800);
         height: 100%;
+        top:0;
 
         .logo {
             padding: 20px;
