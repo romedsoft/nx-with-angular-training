@@ -7,16 +7,20 @@ import { appRoutes } from './app.routes';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent],
-    imports: [BrowserModule, RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })],
+    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent],
+    imports: [BrowserModule, HttpClientModule, SharedModule, RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })],
     providers: [],
     bootstrap: [AppComponent],
     exports: [
       ShellComponent,
       SidebarComponent,
-      DashboardComponent
+      DashboardComponent,
+      CategoriesComponent
     ]
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { ShellComponent } from './shared/shell/shell.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 
 export const appRoutes: Route[] = [
     {
@@ -10,6 +11,10 @@ export const appRoutes: Route[] = [
             {
                 path: 'dashboard',
                 component: DashboardComponent  
+            }  ,
+            {
+                path: 'categories',
+                component: CategoriesComponent  
             }  
         ]
     }
