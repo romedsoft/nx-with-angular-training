@@ -19,7 +19,8 @@
             "@romedsoft/products": ["libs/products/src/index.ts"],
             "@romedsoft/ui": ["libs/ui/src/index.ts"],
             "@romedsoft/users": ["libs/users/src/index.ts"]
-        }
+        },
+        "noPropertyAccessFromIndexSignature": false
     },
     "exclude": ["node_modules", "tmp"]
 }
