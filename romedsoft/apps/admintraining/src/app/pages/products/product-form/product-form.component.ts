@@ -26,16 +26,17 @@ export class ProductFormComponent  implements OnInit {
 
     ngOnInit(): void {
       this.form = this.formBuilder.group({
-        name : ['', Validators.required],
-        description : ['', Validators.required]
+        name : ['', Validators.required]
+        ,description : ['', Validators.required]
+        ,brand : ['', Validators.required]
+        ,price : [0.0, Validators.required]
+        ,category : ['', Validators.required]
+        ,countInStock : [0, Validators.required]
         ,richDescription : ['']
-        ,brand : ['']
-        ,price : [0.0]
-        ,category : ['']
-        ,countInStock : [0]
         ,rating : [0]
         ,numReviews : [0]
         ,isFeatured : [false]
+        ,image : ['']
       });
   
       this._checkEditMode();
