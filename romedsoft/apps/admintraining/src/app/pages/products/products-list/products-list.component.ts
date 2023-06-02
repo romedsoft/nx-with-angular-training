@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Product } from '@romedsoft/products';
+import { Component, OnInit } from '@angular/core';
+import { Product, ProductsService } from '@romedsoft/products';
 
 @Component({
   selector: 'admin-products',
@@ -7,9 +7,16 @@ import { Product } from '@romedsoft/products';
   styles: [
   ]
 })
-export class ProductsListComponent {
+export class ProductsListComponent  implements OnInit {
   products : Array<Product> = [];
 
+  constructor(private productsService : ProductsService) {
+    
+  }
+
+  ngOnInit(): void {
+    this._getProducts();
+  }
 
   deleteProduct(productId : string){
     
@@ -17,5 +24,11 @@ export class ProductsListComponent {
 
   editProduct(productId : string){
 
+  }
+
+  private _getProducts() {
+    this.productsService.getProducts().subscribe(prods => {
+      this.products = prods;
+   });
   }
 }
