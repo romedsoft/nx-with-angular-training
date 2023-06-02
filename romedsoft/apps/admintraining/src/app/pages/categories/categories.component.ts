@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoriesService, Category} from '@romedsoft/products'
 import { ConfirmEventType, ConfirmationService, MessageService } from 'primeng/api';
 
@@ -15,7 +16,8 @@ export class CategoriesComponent implements OnInit {
 
   constructor(private categoriesService : CategoriesService,
     private messageService : MessageService,
-    private confirmationService: ConfirmationService) {
+    private confirmationService: ConfirmationService,
+    private router : Router) {
 
   }
   ngOnInit(): void {
@@ -63,8 +65,8 @@ export class CategoriesComponent implements OnInit {
     
   }
 
-  editCategory() : void {
-    
+  editCategory(categoryId : string) : void {
+    this.router.navigateByUrl(`categories/form/${categoryId}`)
   }
 
 }

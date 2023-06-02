@@ -22,6 +22,10 @@ export const appRoutes: Route[] = [
             {
                 path: 'categories/form',
                 component: CategoryFormComponent  
+            }   ,
+            {
+                path: 'categories/form/:id',
+                component: CategoryFormComponent  
             }   
         ]
     }

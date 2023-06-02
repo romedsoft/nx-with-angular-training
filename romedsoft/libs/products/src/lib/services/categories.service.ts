@@ -22,4 +22,12 @@ export class CategoriesService {
   deleteCategory(categoryId : string){
     return this.http.delete("http://localhost:3000/api/v1/categories/" + categoryId );
   }
+
+  getCategory(categoryId : string) : Observable<Category>{
+    return this.http.get<Category>("http://localhost:3000/api/v1/categories/" + categoryId );
+  }
+
+  updateCategory(categoryId :string, category : Category) {
+    return this.http.put("http://localhost:3000/api/v1/categories/" + categoryId, category);
+  }
 }
