@@ -16,11 +16,12 @@ import { CategoryFormComponent } from './pages/categories/categories/category-fo
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 import { ProductFormComponent } from './pages/products/product-form/product-form.component';
+import { CategoriesService, ProductsService } from '@romedsoft/products';
 
 @NgModule({
     declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent],
     imports: [BrowserModule, BrowserAnimationsModule,  FormsModule, ReactiveFormsModule, HttpClientModule, SharedModule, RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })],
-    providers: [MessageService, ConfirmationService],
+    providers: [MessageService, ConfirmationService, ProductsService, CategoriesService],
     bootstrap: [AppComponent],
     exports: [
       ShellComponent,

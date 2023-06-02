@@ -39,7 +39,7 @@
                     <div class="field col">
                         <label for="icon">Icon</label>
                         <input formControlName="icon" id="icon" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <small *ngIf="form.controls.icon.invalid  && isSubmited" class="p-invalid">Icon is Required</small>
+                        <small *ngIf="form.invalid  && isSubmited" class="p-invalid">Icon is Required</small>
                     </div>
 
                     <div class="field col">
