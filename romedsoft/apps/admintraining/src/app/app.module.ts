@@ -9,14 +9,16 @@ import { appRoutes } from './app.routes';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { CategoriesComponent } from './pages/categories/categories.component';
+import { CategoriesComponent } from './pages/categories/categories-list/categories.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoryFormComponent } from './components/categories/category-form/category-form.component';
+import { CategoryFormComponent } from './pages/categories/categories/category-form/category-form.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductFormComponent } from './pages/products/product-form/product-form.component';
 
 @NgModule({
-    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent],
+    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent],
     imports: [BrowserModule, BrowserAnimationsModule,  FormsModule, ReactiveFormsModule, HttpClientModule, SharedModule, RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })],
     providers: [MessageService, ConfirmationService],
     bootstrap: [AppComponent],
@@ -25,7 +27,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
       SidebarComponent,
       DashboardComponent,
       CategoriesComponent,
-      CategoryFormComponent
+      CategoryFormComponent,
+      ProductsListComponent,
+      ProductFormComponent
     ]
 })
 export class AppModule {}
