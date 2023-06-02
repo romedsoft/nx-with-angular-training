@@ -1,7 +1,6 @@
 {
   "root": true,
   "rules": {
-    "@typescript-eslint/no-inferrable-types": "off"
   },
   "ignorePatterns": ["**/*"],
   "plugins": ["@nx"],

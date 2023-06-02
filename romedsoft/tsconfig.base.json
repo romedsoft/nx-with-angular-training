@@ -18,7 +18,8 @@
             "@romedsoft/orders": ["libs/orders/src/index.ts"],
             "@romedsoft/products": ["libs/products/src/index.ts"],
             "@romedsoft/ui": ["libs/ui/src/index.ts"],
-            "@romedsoft/users": ["libs/users/src/index.ts"]
+            "@romedsoft/users": ["libs/users/src/index.ts"] ,
+            "@env/*": ["environments/*.ts"]
         },
         "noPropertyAccessFromIndexSignature": false
     },

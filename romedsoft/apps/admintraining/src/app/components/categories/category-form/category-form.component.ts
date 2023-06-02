@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesService, Category } from '@romedsoft/products';
 import { MessageService } from 'primeng/api';
-import { Observer, timer } from 'rxjs';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'admin-category-form',
@@ -15,8 +15,8 @@ import { Observer, timer } from 'rxjs';
 export class CategoryFormComponent implements OnInit {
 
   form!: FormGroup;
-  isSubmited : boolean = false;
-  editMode : boolean = false;
+  isSubmited = false;
+  editMode = false;
   categoryId! : string ;
 
   constructor(private formBuilder: FormBuilder,
@@ -29,7 +29,7 @@ export class CategoryFormComponent implements OnInit {
     this.form = this.formBuilder.group({
       name : ['', Validators.required],
       icon : ['', Validators.required]
-      // ,color : ['']
+      ,color : ['#fff']
     });
 
     this._checkEditMode();
@@ -41,18 +41,17 @@ export class CategoryFormComponent implements OnInit {
 
       const category :  Category = {
         name: this.form.controls.name.value,
-        icon: this.form.controls.icon.value
+        icon: this.form.controls.icon.value,
+        color : this.form.controls.color.value
       };
       const categoryObserver  = {
-        next: (response: any)=> {
-          console.log(response);
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: `The category was ${this.editMode ? 'updated' : 'created' }` });
-          timer(2000).toPromise().then(done => {
+        next: (category: Category)=> {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: `The category ${category.name} was ${this.editMode ? 'updated' : 'created' }` });
+          timer(2000).toPromise().then(() => {
             this.location.back();
           });
         },
-        error: (e: any) => {
-          console.log(e);
+        error: () => {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: `The category was not  ${this.editMode ? 'updated' : 'created' }` });
         },
       };
@@ -85,9 +84,9 @@ export class CategoryFormComponent implements OnInit {
             next: (category: Category)=> {
               this.form.controls.name.setValue(category.name)
               this.form.controls.icon.setValue(category.icon)
+              this.form.controls.color.setValue(category.color)
             },
-            error: (e: any) => {
-              console.log(e);
+            error: () => {
               this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The category was not found' });
             },
           };

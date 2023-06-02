@@ -38,13 +38,11 @@ export class CategoriesComponent implements OnInit {
       icon: 'pi pi-info-circle',
       accept: () => {
         const observer = {
-          next: (response: any)=> {
-            console.log(response);
+          next: ()=> {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The category was deleted' });
             this._getCategories();
           },
-          error: (e: any) => {
-            console.log(e);
+          error: () => {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The category was not deleted' });
           },
         };
