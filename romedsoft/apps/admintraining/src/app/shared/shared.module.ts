@@ -6,7 +6,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from "primeng/inputtext";
 import { ToastModule } from "primeng/toast";
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 const UX_MODULES = [
     CardModule,
@@ -15,7 +15,8 @@ const UX_MODULES = [
     SplitButtonModule,
     TableModule, 
     InputTextModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
 ]
 
 

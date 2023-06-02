@@ -18,4 +18,8 @@ export class CategoriesService {
   createCategory(category : Category) {
     return this.http.post("http://localhost:3000/api/v1/categories", category);
   }
+
+  deleteCategory(categoryId : string){
+    return this.http.delete("http://localhost:3000/api/v1/categories/" + categoryId );
+  }
 }

@@ -13,12 +13,12 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryFormComponent } from './components/categories/category-form/category-form.component';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
     declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent],
     imports: [BrowserModule, BrowserAnimationsModule,  FormsModule, ReactiveFormsModule, HttpClientModule, SharedModule, RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })],
-    providers: [MessageService],
+    providers: [MessageService, ConfirmationService],
     bootstrap: [AppComponent],
     exports: [
       ShellComponent,
