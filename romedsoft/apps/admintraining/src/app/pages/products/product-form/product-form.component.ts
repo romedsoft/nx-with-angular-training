@@ -2,8 +2,9 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Product, ProductsService } from '@romedsoft/products';
+import { CategoriesService, Category, Product, ProductsService } from '@romedsoft/products';
 import { MessageService } from 'primeng/api';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -17,11 +18,14 @@ export class ProductFormComponent  implements OnInit {
   isSubmited = false;
   editMode = false;
   productId! : string ;
+  categories : Array<Category> = [];
+  selectedCategory! : Category;
 
   constructor(private formBuilder: FormBuilder,
-    private categoriesService : ProductsService
-    ,private messageService: MessageService
-    , private location : Location,
+    private productsService : ProductsService,
+    private categoriesService : CategoriesService,
+    private messageService: MessageService
+    ,private location : Location,
     private route : ActivatedRoute){}
 
     ngOnInit(): void {
@@ -40,10 +44,29 @@ export class ProductFormComponent  implements OnInit {
       });
   
       this._checkEditMode();
+      this._getCategories();
     }
 
     onSubmit(){
 
+    }
+
+    onCategoryChange(e: any){
+      console.log(e);
+    }
+
+    private _getCategories(){
+
+      const getCategoriesObserver = {
+        next: (categories: Category[])=> {
+          this.categories = categories;
+        },
+        error: () => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'There are problems trying to get the categories list.' });
+        },
+      };
+
+      this.categoriesService.getCategories().subscribe(getCategoriesObserver);
     }
 
     private _checkEditMode(){
@@ -71,7 +94,7 @@ export class ProductFormComponent  implements OnInit {
               },
             };
   
-            this.categoriesService.getCategory(params.id).subscribe(getProductObserver);
+            this.productsService.getProduct(params.id).subscribe(getProductObserver);
           }
       });
     }

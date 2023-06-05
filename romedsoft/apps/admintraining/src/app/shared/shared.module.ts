@@ -9,6 +9,11 @@ import { ToastModule } from "primeng/toast";
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { TagModule } from 'primeng/tag';
+import { InputNumberModule } from "primeng/inputnumber";
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { DropdownModule } from 'primeng/dropdown';
+import { EditorModule } from 'primeng/editor';
 
 const UX_MODULES = [
     CardModule,
@@ -20,7 +25,12 @@ const UX_MODULES = [
     ToastModule,
     ConfirmDialogModule,
     ColorPickerModule,
-    TagModule
+    TagModule,
+    InputNumberModule,
+    InputTextareaModule,
+    InputSwitchModule,
+    DropdownModule,
+    EditorModule
 ]
 
 

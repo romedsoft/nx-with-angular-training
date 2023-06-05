@@ -15,19 +15,19 @@ export class ProductsService {
      return this.http.get<Array<Product>>(this.productsUrl);
   }
 
-  createCategory(product : Product) {
+  createProduct(product : Product) {
     return this.http.post(this.productsUrl, product);
   }
 
-  deleteCategory(id : string){
+  deleteProduct(id : string){
     return this.http.delete(this.productsUrl + "/" + id );
   }
 
-  getCategory(id : string) : Observable<Product>{
+  getProduct(id : string) : Observable<Product>{
     return this.http.get<Product>(this.productsUrl + "/" + id );
   }
 
-  updateCategory(id :string, product : Product) {
+  updateProduct(id :string, product : Product) {
     return this.http.put(this.productsUrl + "/" + id, product);
   }
 }

@@ -17,7 +17,7 @@
                 "tsConfig": "apps/admintraining/tsconfig.app.json",
                 "assets": ["apps/admintraining/src/favicon.ico", "apps/admintraining/src/assets"],
                 "styles": ["apps/admintraining/src/styles.scss"],
-                "scripts": []
+                "scripts": ["node_modules/quill/dist/quill.js"]
             },
             "configurations": {
                 "production": {

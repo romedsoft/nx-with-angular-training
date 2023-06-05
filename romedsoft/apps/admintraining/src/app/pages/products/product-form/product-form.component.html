@@ -39,9 +39,56 @@
                     <div class="field col">
                         <label for="brand">Brand</label>
                         <input formControlName="brand" id="brand" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        <small *ngIf="form.invalid  && isSubmited" class="p-invalid">Brand is Required</small>
+                        <small *ngIf="form.controls.brand.invalid  && isSubmited" class="p-invalid">Brand is Required</small>
+                    </div>
+                    <div class="field col">
+                        <label for="withoutgrouping">Price</label><br/>
+                        <p-inputNumber formControlName="price" mode="decimal" [useGrouping]="false"> </p-inputNumber>
+                        <small *ngIf="form.controls.price.invalid  && isSubmited" class="p-invalid">Price is Required</small>
+                    </div>
+                </div>
+
+                <div class="formgrid grid">
+                    <div class="field col-4">
+                        <label for="countInStock">Count in Stock </label><br/>
+                        <p-inputNumber formControlName="countInStock" mode="decimal" [useGrouping]="false"> </p-inputNumber>
+                        <small *ngIf="form.controls.countInStock.invalid && isSubmited" class="p-invalid">Count in Stock is Required</small>
                     </div>
 
+                    <div class="field col-4">
+                        <label for="category">Category</label><br/>
+                        <div *ngIf="form.controls.category.value" class="border-circle w-1rem h-1rem  font-bold flex align-items-center justify-content-center" [ngStyle]="{'background-color': form.controls.category.value.color}" style="display:inline-block!important; margin-right: 4px!important;"></div>
+                        <p-dropdown (onChange)="onCategoryChange($event)" [options]="categories" formControlName="category" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Category" [style]="{'width' : '90%'}">
+                            <ng-template pTemplate="selectedItem">
+                                <div class="flex align-items-center gap-2" *ngIf="form.controls.category.value">
+                                    <div>{{ form.controls.category.value.name }}</div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-cat pTemplate="item">
+                                <div class="flex align-items-center gap-2">
+                                    <div class="border-circle w-2rem h-2rem m-2 font-bold flex align-items-center justify-content-center" [ngStyle]="{'background-color': cat.color}"></div>
+                                    <div>{{ cat.name }}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                        <small *ngIf="form.controls.category.invalid && isSubmited" class="p-invalid">Category in Stock is Required</small>
+                    </div>
+
+                    <div class="field col-4">
+                        <label for="isFeatured">Is Featured</label><br/>
+                        <p-inputSwitch formControlName="isFeatured"></p-inputSwitch>
+                    </div>
+
+                    <div class="field col-12">
+                        <label for="description">Description</label><br/>
+                        <textarea [rows]="7" [cols]="30" pInputTextarea formControlName="description" [autoResize]="true" ></textarea>
+                        <small *ngIf="form.controls.description.invalid && isSubmited" class="p-invalid">Description is Required</small>
+                    </div>
+
+                    <div class="field col-12">
+                        <label for="richDescription">Product Details</label><br/>
+                        <p-editor formControlName="richDescription" [style]="{ height: '320px' }"></p-editor>
+                    </div>
                 </div>
                </form>
 
