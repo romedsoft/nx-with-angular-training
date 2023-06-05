@@ -5,6 +5,8 @@ import { CategoriesComponent } from './pages/categories/categories-list/categori
 import { CategoryFormComponent } from './pages/categories/categories/category-form/category-form.component';
 import { ProductFormComponent } from './pages/products/product-form/product-form.component';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { UsersListComponent } from './pages/users/users-list/users-list.component';
+import { UserFormComponent } from './pages/users/user-form/user-form.component';
 
 
 
@@ -41,6 +43,18 @@ export const appRoutes: Route[] = [
             {
                 path: 'products/form/:id',
                 component: ProductFormComponent  
+            },
+            {
+                path: 'users',
+                component: UsersListComponent  
+            }   ,
+            {
+                path: 'users/form',
+                component: UserFormComponent  
+            },
+            {
+                path: 'users/form/:id',
+                component: UserFormComponent  
             }
         ]
     }

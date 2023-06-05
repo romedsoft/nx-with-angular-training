@@ -8,7 +8,7 @@ import { timer } from 'rxjs';
 
 
 @Component({
-  selector: 'admin-products',
+  selector: 'admin-product',
   templateUrl: './product-form.component.html',
   styles: [
   ]
