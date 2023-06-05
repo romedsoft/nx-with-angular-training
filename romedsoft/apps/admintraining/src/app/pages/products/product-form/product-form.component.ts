@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesService, Category, Product, ProductsService } from '@romedsoft/products';
 import { MessageService } from 'primeng/api';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -20,6 +19,7 @@ export class ProductFormComponent  implements OnInit {
   productId! : string ;
   categories : Array<Category> = [];
   selectedCategory! : Category;
+  imageDisplay!: string | ArrayBuffer | null;
 
   constructor(private formBuilder: FormBuilder,
     private productsService : ProductsService,
@@ -37,8 +37,6 @@ export class ProductFormComponent  implements OnInit {
         ,category : ['', Validators.required]
         ,countInStock : [0, Validators.required]
         ,richDescription : ['']
-        ,rating : [0]
-        ,numReviews : [0]
         ,isFeatured : [false]
         ,image : ['']
       });
@@ -53,6 +51,20 @@ export class ProductFormComponent  implements OnInit {
 
     onCategoryChange(e: any){
       console.log(e);
+    }
+
+    onImageUpload(event: any){
+      console.log(event);
+      const file = event.target.files.length > 0 ? event.target.files[0] : null;
+
+      if(file){
+        const fileReader = new FileReader();
+        fileReader.onload = ()=>{
+          this.imageDisplay = fileReader.result;
+        };
+        fileReader.readAsDataURL(file);
+      }
+
     }
 
     private _getCategories(){
@@ -85,8 +97,6 @@ export class ProductFormComponent  implements OnInit {
                 this.form.controls.price.setValue(product.price)
                 this.form.controls.category.setValue(product.category)
                 this.form.controls.countInStock.setValue(product.countInStock)
-                this.form.controls.rating.setValue(product.rating)
-                this.form.controls.numReviews.setValue(product.numReviews)
                 this.form.controls.isFeatured.setValue(product.isFeatured)
               },
               error: () => {
