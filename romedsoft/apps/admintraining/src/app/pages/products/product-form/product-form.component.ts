@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesService, Category, Product, ProductsService } from '@romedsoft/products';
 import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
 
 
 @Component({
@@ -46,11 +47,25 @@ export class ProductFormComponent  implements OnInit {
     }
 
     onSubmit(){
+      this.isSubmited = true;
+      if(this.form.invalid)
+        return;
 
+        const productFormData = new FormData();
+
+        Object.keys(this.form.controls).map((key)=> {
+          console.log(this.form.controls[key].value);
+          productFormData.append(key,this.form.controls[key].value);
+        });
+
+        this._saveProduct(productFormData);
     }
 
     onCategoryChange(e: any){
       console.log(e);
+      this.selectedCategory = this.categories.filter((item)=> {
+        return item.id == e.value;
+      })[0];
     }
 
     onImageUpload(event: any){
@@ -58,12 +73,39 @@ export class ProductFormComponent  implements OnInit {
       const file = event.target.files.length > 0 ? event.target.files[0] : null;
 
       if(file){
+
+        this.form.patchValue({image: file});
+        this.form.get("image")?.updateValueAndValidity();
+
         const fileReader = new FileReader();
         fileReader.onload = ()=>{
           this.imageDisplay = fileReader.result;
         };
         fileReader.readAsDataURL(file);
       }
+
+    }
+
+    _saveProduct(productFormData : FormData){
+
+      const productObserver  = {
+        next: (product: Product)=> {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: `The product ${product.name} was ${this.editMode ? 'updated' : 'created' }` });
+          timer(2000).toPromise().then(() => {
+            this.location.back();
+          });
+        },
+        error: () => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: `The product was not  ${this.editMode ? 'updated' : 'created' }` });
+        },
+      };
+
+      if(this.editMode){
+        this.productsService.updateProduct(this.productId, productFormData).subscribe(productObserver);
+      }else{
+        this.productsService.createProduct(productFormData).subscribe(productObserver);
+      }
+      
 
     }
 

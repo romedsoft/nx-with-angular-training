@@ -15,8 +15,8 @@ export class ProductsService {
      return this.http.get<Array<Product>>(this.productsUrl);
   }
 
-  createProduct(product : Product) {
-    return this.http.post(this.productsUrl, product);
+  createProduct(productData : FormData) : Observable<Product> {
+    return this.http.post<Product>(this.productsUrl, productData);
   }
 
   deleteProduct(id : string){
@@ -27,7 +27,7 @@ export class ProductsService {
     return this.http.get<Product>(this.productsUrl + "/" + id );
   }
 
-  updateProduct(id :string, product : Product) {
-    return this.http.put(this.productsUrl + "/" + id, product);
+  updateProduct(id :string, productData : FormData) {
+    return this.http.put(this.productsUrl + "/" + id, productData);
   }
 }
