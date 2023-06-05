@@ -20,7 +20,7 @@ export class ProductFormComponent  implements OnInit {
   productId! : string ;
   categories : Array<Category> = [];
   selectedCategory! : Category;
-  imageDisplay!: string | ArrayBuffer | null;
+  imageDisplay: string | ArrayBuffer | null | undefined;
 
   constructor(private formBuilder: FormBuilder,
     private productsService : ProductsService,
@@ -39,7 +39,7 @@ export class ProductFormComponent  implements OnInit {
         ,countInStock : [0, Validators.required]
         ,richDescription : ['']
         ,isFeatured : [false]
-        ,image : ['']
+        ,image : ['', Validators.required]
       });
   
       this._checkEditMode();
@@ -123,6 +123,8 @@ export class ProductFormComponent  implements OnInit {
       this.categoriesService.getCategories().subscribe(getCategoriesObserver);
     }
 
+
+
     private _checkEditMode(){
       this.route.params.subscribe( params => {
           if(params.id){
@@ -137,12 +139,19 @@ export class ProductFormComponent  implements OnInit {
 
                 this.form.controls.brand.setValue(product.brand)
                 this.form.controls.price.setValue(product.price)
-                this.form.controls.category.setValue(product.category)
+                this.form.controls.category.setValue(product.category?.id)
                 this.form.controls.countInStock.setValue(product.countInStock)
                 this.form.controls.isFeatured.setValue(product.isFeatured)
+
+                if(product.category)
+                  this.selectedCategory = product.category;
+
+                this.imageDisplay = product.image;
+                this.form.controls.image.setValidators([]);
+                this.form.get("image")?.updateValueAndValidity();
               },
               error: () => {
-                this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The category was not found' });
+                this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The product was not found' });
               },
             };
   
