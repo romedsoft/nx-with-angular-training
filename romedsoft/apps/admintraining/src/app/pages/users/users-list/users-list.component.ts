@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UsersService } from '@romedsoft/users'
 import { ConfirmEventType, ConfirmationService, MessageService } from 'primeng/api';
+import * as countriesLib from 'i18n-iso-countries';
+
+declare const require: (arg0: string) => countriesLib.LocaleData;
 
 
 @Component({
@@ -12,6 +15,7 @@ import { ConfirmEventType, ConfirmationService, MessageService } from 'primeng/a
 })
 export class UsersListComponent implements OnInit {
   users : Array<User> = [];
+  countries!: { id: string; name: string; }[];
 
   constructor(private userService : UsersService,
     private messageService : MessageService,
@@ -21,13 +25,32 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._getCountries();
     this._getUsers();
+    
   }
 
   private _getUsers() {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
    });
+  }
+
+  getCountryName(countryCode : string){
+    return this.countries.filter((item)=> {
+      return item.id == countryCode;
+    })[0].name;
+  }
+
+  private _getCountries(){
+    countriesLib.registerLocale(require('i18n-iso-countries/langs/en.json'));
+    this.countries = Object.entries(countriesLib.getNames('en', { select : 'official'})).map((entry) : { id : string, name: string}=>
+    {
+      console.log(entry);
+      const country = { id : entry[0], name : entry[1]}
+       return country;
+    });
+    
   }
 
   deleteUser(userId : string){
