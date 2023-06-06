@@ -5,6 +5,9 @@ import { User, UsersService } from '@romedsoft/users';
 import { MessageService } from 'primeng/api';
 import { Location } from '@angular/common';
 import { timer } from 'rxjs';
+import * as countriesLib from 'i18n-iso-countries';
+
+declare const require: (arg0: string) => countriesLib.LocaleData;
 
 @Component({
   selector: 'admin-user',
@@ -18,6 +21,7 @@ export class UserFormComponent implements OnInit {
   isSubmited = false;
   editMode = false;
   userId! : string ;
+  countries!: { id: string; name: string; }[];
 
   constructor(private formBuilder: FormBuilder,
     private usersService : UsersService
@@ -28,7 +32,7 @@ export class UserFormComponent implements OnInit {
     ngOnInit(): void {
       this.form = this.formBuilder.group({
         name : ['', Validators.required],
-        email : ['', Validators.required]
+        email : ['', [Validators.required, Validators.email]]
         ,phone : ['', Validators.required]
         ,isAdmin : [false, Validators.required]
         ,street : ['', Validators.required]
@@ -36,9 +40,12 @@ export class UserFormComponent implements OnInit {
         ,zip : ['', Validators.required]
         ,city : ['', Validators.required]
         ,country : ['', Validators.required]
+        ,password : ['', Validators.required]
       });
   
       this._checkEditMode();
+
+      this._getCountries();
     }
   
     onSubmit(): void {
@@ -54,7 +61,8 @@ export class UserFormComponent implements OnInit {
           apartment : this.form.controls.apartment.value,
           zip : this.form.controls.zip.value,
           city : this.form.controls.city.value,
-          country : this.form.controls.country.value
+          country : this.form.controls.country.value,
+          password : this.form.controls.password.value
         };
         const userObserver  = {
           next: (user: User)=> {
@@ -104,6 +112,16 @@ export class UserFormComponent implements OnInit {
             this.usersService.getUser(params.id).subscribe(getUserObserver);
           }
       });
+    }
+
+    private _getCountries(){
+      countriesLib.registerLocale(require('i18n-iso-countries/langs/en.json'));
+      this.countries = Object.entries(countriesLib.getNames('en', { select : 'official'})).map((entry) : { id : string, name: string}=>
+      {
+        const country = { id : entry[0], name : entry[1]}
+         return country;
+      });
+      
     }
 
 }

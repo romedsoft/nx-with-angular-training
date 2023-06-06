@@ -9,4 +9,5 @@ export class User {
     zip? : string;
     city? : string;
     country? : string;
+    password? : string;
 }
