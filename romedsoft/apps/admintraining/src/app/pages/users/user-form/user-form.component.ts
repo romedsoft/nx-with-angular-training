@@ -103,6 +103,9 @@ export class UserFormComponent implements OnInit {
                 this.form.controls.zip.setValue(user.zip);
                 this.form.controls.city.setValue(user.city);
                 this.form.controls.country.setValue(user.country);
+
+                this.form.controls.password.setValidators([]);
+                this.form.get("password")?.updateValueAndValidity();
               },
               error: () => {
                 this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The user was not found' });

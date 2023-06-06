@@ -43,10 +43,14 @@
                         <small *ngIf="form.controls.email.invalid  && isSubmited && form.controls.email.errors!.email" class="p-invalid">Email is Invalid</small>
                     </div>
 
-                    <div class="field col-4">
+                    <div class="field col-4" *ngIf="!editMode">
                         <label for="password">Password</label>
                         <input formControlName="password" id="password" type="password" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                         <small *ngIf="form.controls.name.invalid && isSubmited" class="p-invalid">Password is Required</small>
+                    </div>
+
+                    <div class="field col-4" *ngIf="editMode">
+
                     </div>
 
                     <div class="field col-4">
