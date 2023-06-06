@@ -64,6 +64,9 @@ export class UserFormComponent implements OnInit {
           country : this.form.controls.country.value,
           password : this.form.controls.password.value
         };
+
+        console.log(this.form.controls.country);
+
         const userObserver  = {
           next: (user: User)=> {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: `The user ${user.name} was ${this.editMode ? 'updated' : 'created' }` });
@@ -83,8 +86,10 @@ export class UserFormComponent implements OnInit {
         }
   
       }
-      
-  
+    }
+
+    onUserChange(event: any){
+      console.log(event);
     }
 
     private _checkEditMode(){
@@ -121,6 +126,7 @@ export class UserFormComponent implements OnInit {
       countriesLib.registerLocale(require('i18n-iso-countries/langs/en.json'));
       this.countries = Object.entries(countriesLib.getNames('en', { select : 'official'})).map((entry) : { id : string, name: string}=>
       {
+        console.log(entry);
         const country = { id : entry[0], name : entry[1]}
          return country;
       });

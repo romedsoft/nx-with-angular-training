@@ -90,7 +90,7 @@
 
                     <div class="field col-4">
                         <label for="country">Country</label><br/>
-                        <p-dropdown formControlName="country" placeholder="Select a Country" [options]="countries" optionLabel="name" optionValue="id" [filter]="true" filterBy="name" [showClear]="true" [style]="{'width' : '90%'}"></p-dropdown>
+                        <p-dropdown (onChange)="onUserChange($event)" formControlName="country" placeholder="Select a Country" [options]="countries" optionLabel="name" optionValue="id" [filter]="true" filterBy="name" [showClear]="true" [style]="{'width' : '90%'}"></p-dropdown>
                     </div>
                 </div>
                </form>
