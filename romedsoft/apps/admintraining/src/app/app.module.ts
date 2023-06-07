@@ -21,11 +21,22 @@ import { UsersListComponent } from './pages/users/users-list/users-list.componen
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-details.component';
+import { UsersModule } from '@romedsoft/users';
 
 @NgModule({
     declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent, UsersListComponent, UserFormComponent, OrdersListComponent, OrdersDetailsComponent],
-    imports: [BrowserModule, BrowserAnimationsModule,  FormsModule, ReactiveFormsModule, HttpClientModule, SharedModule, RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })],
-    providers: [MessageService, ConfirmationService, ProductsService, CategoriesService],
+    imports: 
+    [
+      BrowserModule, 
+      BrowserAnimationsModule,  
+      FormsModule, 
+      ReactiveFormsModule, 
+      HttpClientModule, 
+      SharedModule, 
+      RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+      UsersModule
+    ]
+    ,providers: [MessageService, ConfirmationService, ProductsService, CategoriesService],
     bootstrap: [AppComponent],
     exports: [
       ShellComponent,

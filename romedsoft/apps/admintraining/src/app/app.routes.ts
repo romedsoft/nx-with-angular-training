@@ -12,6 +12,7 @@ import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-det
 
 
 
+
 export const appRoutes: Route[] = [
     {
         path : '',
@@ -68,6 +69,5 @@ export const appRoutes: Route[] = [
             }
         ]
     }
-
 
 ];
