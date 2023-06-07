@@ -19,9 +19,11 @@ import { ProductFormComponent } from './pages/products/product-form/product-form
 import { CategoriesService, ProductsService } from '@romedsoft/products';
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
+import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
+import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-details.component';
 
 @NgModule({
-    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent, UsersListComponent, UserFormComponent],
+    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent, UsersListComponent, UserFormComponent, OrdersListComponent, OrdersDetailsComponent],
     imports: [BrowserModule, BrowserAnimationsModule,  FormsModule, ReactiveFormsModule, HttpClientModule, SharedModule, RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })],
     providers: [MessageService, ConfirmationService, ProductsService, CategoriesService],
     bootstrap: [AppComponent],
@@ -34,7 +36,9 @@ import { UserFormComponent } from './pages/users/user-form/user-form.component';
       ProductsListComponent,
       ProductFormComponent,
       UsersListComponent,
-      UserFormComponent
+      UserFormComponent,
+      OrdersListComponent,
+      OrdersDetailsComponent
     ]
 })
 export class AppModule {}
