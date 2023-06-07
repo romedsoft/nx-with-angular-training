@@ -23,7 +23,7 @@ export class OrdersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.orderStatus = this.ordersService.getOrderStatusList();
+    this.orderStatus = this.ordersService.getOrderStatusDictionary();
     this._getOrders();
   }
 

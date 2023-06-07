@@ -51,11 +51,20 @@ export class OrdersService {
     return this.http.get<Order>(this.ordersUrl + "/" + id );
   }
 
-  updateOrder(id :string, order : Order) {
-    return this.http.put(this.ordersUrl + "/" + id, order);
+  updateOrderStatus(id :string, orderStatus : { status : string}) {
+    return this.http.put(this.ordersUrl + "/" + id, orderStatus);
+  }
+
+  getOrderStatusDictionary(){
+      return ORDER_STATUS;
   }
 
   getOrderStatusList(){
-      return ORDER_STATUS;
-  }
+    return Object.keys(ORDER_STATUS).map(key => {
+        return {
+          id: key,
+          name : ORDER_STATUS[key].label
+        }
+    });
+}
 }

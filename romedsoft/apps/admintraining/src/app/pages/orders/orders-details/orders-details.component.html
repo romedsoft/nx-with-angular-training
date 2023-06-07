@@ -17,7 +17,8 @@
 
                 <div class="col-4">
                     <h5>Order Status</h5>
-                    <!-- <p-dropdown formControlName="status" [options]="statusList" optionLabel="name"></p-dropdown> -->
+                    
+                    <p-dropdown (onChange)="onStatusChange($event)" [options]="orderStatus" [(ngModel)]="selectedStatus" optionLabel="name" optionValue="id"></p-dropdown>
                 </div>
 
 

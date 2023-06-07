@@ -12,8 +12,9 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class OrdersDetailsComponent  implements OnInit {
 
   order! : Order;
-  orderStatus! : any;
+  orderStatus! : any[];
   orderId! : string;
+  selectedStatus! : any;
 
   constructor(private ordersService : OrdersService,
     private messageService : MessageService,
@@ -27,6 +28,19 @@ export class OrdersDetailsComponent  implements OnInit {
     
     this._initStatusList();
     this._getOrder();
+  }
+
+  onStatusChange(event :any){
+    const updateObserver = {
+      next: (order: Order)=> {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'The status was updated' });
+      },
+      error: () => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The order was not found' });
+      },
+    };
+
+    this.ordersService.updateOrderStatus(this.orderId, { status : event.value} ).subscribe(updateObserver);
   }
 
   getOrderItems(order : Order) : OrderItem[]{
