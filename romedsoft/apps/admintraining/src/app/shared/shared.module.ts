@@ -15,6 +15,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { DropdownModule } from 'primeng/dropdown';
 import { EditorModule } from 'primeng/editor';
 import { InputMaskModule } from 'primeng/inputmask';
+import { FieldsetModule } from 'primeng/fieldset';
+import { AccordionModule } from 'primeng/accordion';
 
 const UX_MODULES = [
     CardModule,
@@ -32,7 +34,9 @@ const UX_MODULES = [
     InputSwitchModule,
     DropdownModule,
     EditorModule,
-    InputMaskModule
+    InputMaskModule,
+    FieldsetModule,
+    AccordionModule
 ]
 
 

@@ -21,7 +21,7 @@
                             <td>{{ order.user.name }}</td>
                             <td>{{ order.dateOrdered | date:'short' }}</td>
                             <td>{{ order.totalPrice | currency }}</td>
-                            <td> {{ order.status }} </td>
+                            <td> <p-tag [severity]="getOrderStatus(order.status).color" [value]="getOrderStatus(order.status).label"></p-tag>  </td>
                             <td>
 
                                 <p-button 

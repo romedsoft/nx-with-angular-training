@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Order, OrdersService } from "@romedsoft/orders";
 import { ConfirmEventType, ConfirmationService, MessageService } from 'primeng/api';
 
+
 @Component({
   selector: 'admin-orders',
   templateUrl: './orders-list.component.html',
@@ -12,6 +13,7 @@ import { ConfirmEventType, ConfirmationService, MessageService } from 'primeng/a
 export class OrdersListComponent implements OnInit {
 
   orders: Order[] = [];
+  orderStatus! : any;
 
   constructor(private ordersService : OrdersService,
     private messageService : MessageService,
@@ -21,13 +23,21 @@ export class OrdersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.orderStatus = this.ordersService.getOrderStatusList();
     this._getOrders();
   }
 
   private _getOrders() {
     this.ordersService.getOrders().subscribe(orders => {
       this.orders = orders;
+      console.log(this.orderStatus);
    });
+  }
+
+  getOrderStatus(status : string){
+
+    console.log(this.orderStatus[status]);
+    return this.orderStatus[status];
   }
 
   deleteOrder(orderId : string ) : void {

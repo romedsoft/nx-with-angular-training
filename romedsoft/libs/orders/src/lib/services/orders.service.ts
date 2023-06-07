@@ -4,6 +4,30 @@ import { environment } from '@env/environment';
 import { Order } from '@romedsoft/orders';
 import { Observable } from 'rxjs';
 
+const ORDER_STATUS : any = {
+  'Pending' : {
+    label: 'Pending',
+    color: 'primary'
+  },
+  'Processed' : {
+    label: 'Processed',
+    color: 'warning'
+  },
+  'Shipped' : {
+    label: 'Shipped',
+    color: 'warning'
+  },
+  'Delivered' : {
+    label: 'Delivered',
+    color: 'success'
+  },
+  'Failed': {
+    label: 'Failed',
+    color: 'danger'
+  }
+};
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,5 +53,9 @@ export class OrdersService {
 
   updateOrder(id :string, order : Order) {
     return this.http.put(this.ordersUrl + "/" + id, order);
+  }
+
+  getOrderStatusList(){
+      return ORDER_STATUS;
   }
 }
