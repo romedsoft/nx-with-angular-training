@@ -63,6 +63,7 @@ export class OrdersDetailsComponent  implements OnInit {
         const getObserver = {
           next: (order: Order)=> {
             this.order = order;
+            this.selectedStatus = order.status;
           },
           error: () => {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The order was not found' });
