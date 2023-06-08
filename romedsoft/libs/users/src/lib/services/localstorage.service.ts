@@ -20,6 +20,6 @@ export class LocalstorageService {
   }
 
   getItem(key : string){
-    localStorage.getItem(key);
+    return localStorage.getItem(key);
   }
 }

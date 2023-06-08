@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           this.messageService.add({ severity: 'success', summary: 'Success', detail: `The credential are valid.` });
           console.log(user);
           this.authService.setToken(user);
-          this.router.navigate(['/']);
+          return this.router.navigate(['/']);
         },
         error: (error: HttpErrorResponse) => {
           console.log(error);

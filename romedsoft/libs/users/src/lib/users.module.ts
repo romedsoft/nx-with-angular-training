@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { ToastModule } from "primeng/toast";
 import { LocalstorageService } from './services/localstorage.service';
+import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 
 const routes : Routes = [
 
@@ -19,6 +20,10 @@ const routes : Routes = [
   {
     path: 'registration',
     component: RegistrationComponent
+  },
+  {
+    path: 'unauthorized',
+    component: UnauthorizedComponent
   }
 ]
 
@@ -28,11 +33,13 @@ const routes : Routes = [
     providers: [AuthService,LocalstorageService],
     declarations: [
       LoginComponent,
-      RegistrationComponent
+      RegistrationComponent,
+      UnauthorizedComponent
     ],
     exports: [
       LoginComponent,
-      RegistrationComponent
+      RegistrationComponent,
+      UnauthorizedComponent
     ]
 })
 export class UsersModule {}

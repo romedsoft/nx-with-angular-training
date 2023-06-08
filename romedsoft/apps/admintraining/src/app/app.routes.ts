@@ -9,6 +9,8 @@ import { UsersListComponent } from './pages/users/users-list/users-list.componen
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-details.component';
+import { AdminGuard, AuthGuard } from '@romedsoft/users';
+import { inject } from '@angular/core';
 
 
 
@@ -16,6 +18,7 @@ import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-det
 export const appRoutes: Route[] = [
     {
         path : '',
+        canActivate: [AuthGuard, AdminGuard],
         component : ShellComponent,
         children : [
             {

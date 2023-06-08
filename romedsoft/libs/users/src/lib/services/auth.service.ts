@@ -26,4 +26,59 @@ export class AuthService {
     return this.localStorageService.setItem({ key : JWT_TOKEN, value : user.token});
   }
 
+  isAuthenticated(){
+    const jwttoken = this.localStorageService.getItem(JWT_TOKEN);
+
+    if(!jwttoken)
+      return false;
+
+    if(!this._isValidJwtToken(jwttoken)){
+      return false;
+    }
+
+    return true;
+  }
+
+  getDecodedToken(){
+    const jwttoken = this.localStorageService.getItem(JWT_TOKEN);
+
+    if(!jwttoken)
+     return null;
+
+    const tokenDecode = JSON.parse(atob(jwttoken.split('.')[1]));
+
+    return tokenDecode;
+  }
+
+  isAdmin(){
+    const tokenDecode = this.getDecodedToken();
+
+    if(!tokenDecode)
+    return false;
+
+    return tokenDecode.isAdmin;
+
+  }
+
+  private _tokenExpired(expiration : number){
+    return Math.floor(new Date().getTime() / 1000 ) >= expiration;
+  }
+
+  private _isValidJwtToken(token : string){
+
+    try{
+      const tokenDecode = JSON.parse(atob(token.split('.')[1]));
+
+      if(this._tokenExpired(tokenDecode.exp)){
+        return false;
+      }
+
+      return true;
+    }catch(e){
+      return false;
+    }
+    
+    
+  }
+
 }
