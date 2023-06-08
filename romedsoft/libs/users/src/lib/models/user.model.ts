@@ -11,3 +11,8 @@ export class User {
     country? : string;
     password? : string;
 }
+
+export class UserLogin{
+    token?: string;
+    user?: string;
+}

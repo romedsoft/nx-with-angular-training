@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { ToastModule } from "primeng/toast";
+import { LocalstorageService } from './services/localstorage.service';
 
 const routes : Routes = [
 
@@ -24,7 +25,7 @@ const routes : Routes = [
 
 @NgModule({
     imports: [CommonModule, RouterModule.forChild(routes), InputTextModule, ButtonModule,FormsModule,ReactiveFormsModule, ToastModule],
-    providers: [AuthService],
+    providers: [AuthService,LocalstorageService],
     declarations: [
       LoginComponent,
       RegistrationComponent
