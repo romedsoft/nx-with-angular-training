@@ -4,6 +4,7 @@ import { environment } from '@env/environment';
 import { UserLogin } from '@romedsoft/users';
 import { Observable } from 'rxjs';
 import { LocalstorageService } from './localstorage.service';
+import { Router } from '@angular/router';
 
 const JWT_TOKEN = 'jwtToken';
 
@@ -12,10 +13,16 @@ const JWT_TOKEN = 'jwtToken';
 })
 export class AuthService {
   authUsersUrl = environment.apiHost + "users";
-  constructor(private http : HttpClient, private localStorageService : LocalstorageService) { }
+  constructor(private http : HttpClient, private localStorageService : LocalstorageService, private router: Router) { }
 
   login(email : string, password : string ) : Observable<UserLogin>{
     return this.http.post<UserLogin>(this.authUsersUrl + "/login", { email, password});
+  }
+
+  logout(){
+    this.localStorageService.removeItem(JWT_TOKEN);
+
+    this.router.navigate(['/login']);
   }
 
   getToken(){

@@ -19,8 +19,8 @@
         <li>
             <a routerLink="/users"> <i class="pi pi-user"></i>Users</a>
         </li>
-        <li>
-            <a class="logout"> <i class="pi pi-sign-out"></i>Logout</a>
+        <li *ngIf="isAuthenticated">
+            <a (click)="logout()" class="logout"> <i class="pi pi-sign-out"></i>Logout</a>
         </li>
     </ul>
  </div>
