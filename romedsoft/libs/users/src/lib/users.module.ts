@@ -7,6 +7,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
+import { ToastModule } from "primeng/toast";
 
 const routes : Routes = [
 
@@ -22,7 +23,7 @@ const routes : Routes = [
 
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(routes), InputTextModule, ButtonModule,FormsModule,ReactiveFormsModule],
+    imports: [CommonModule, RouterModule.forChild(routes), InputTextModule, ButtonModule,FormsModule,ReactiveFormsModule, ToastModule],
     providers: [AuthService],
     declarations: [
       LoginComponent,

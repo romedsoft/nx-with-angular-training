@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   form!: FormGroup;
   isSubmited = false;
+  errorAuth = false;
 
   constructor(
     private formBuilder: FormBuilder
@@ -46,7 +47,8 @@ export class LoginComponent implements OnInit {
           this.messageService.add({ severity: 'success', summary: 'Success', detail: `The credential are valid.` });
           console.log(user);
         },
-        error: () => {
+        error: (error: any) => {
+          console.log(error);
           this.messageService.add({ severity: 'error', summary: 'Error', detail: `The credentials are invalid.` });
         },
       };
