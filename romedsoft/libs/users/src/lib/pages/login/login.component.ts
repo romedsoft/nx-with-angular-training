@@ -1,5 +1,9 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService, User } from '@romedsoft/users';
+import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'romedsoft-login',
@@ -12,7 +16,14 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   isSubmited = false;
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(
+    private formBuilder: FormBuilder
+    ,private authService :  AuthService
+    , private messageService : MessageService
+    , private location : Location){
+
+
+    }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -30,24 +41,23 @@ export class LoginComponent implements OnInit {
       //   icon: this.form.controls.icon.value,
       //   color : this.form.controls.color.value
       // };
-      // const categoryObserver  = {
-      //   next: (category: Category)=> {
-      //     this.messageService.add({ severity: 'success', summary: 'Success', detail: `The category ${category.name} was ${this.editMode ? 'updated' : 'created' }` });
-      //     timer(2000).toPromise().then(() => {
-      //       this.location.back();
-      //     });
-      //   },
-      //   error: () => {
-      //     this.messageService.add({ severity: 'error', summary: 'Error', detail: `The category was not  ${this.editMode ? 'updated' : 'created' }` });
-      //   },
-      // };
+      const loginObserver  = {
+        next: (user: User)=> {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: `The credential are valid.` });
+          console.log(user);
+        },
+        error: () => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: `The credentials are invalid.` });
+        },
+      };
 
-      // if(this.editMode){
-      //   this._updateCategory(category,categoryObserver);
-      // }else{
-      //   this._createCategory(category,categoryObserver);
-      // }
+      const user = this.authService.login(this.form.controls.email.value, this.form.controls.password.value).subscribe(loginObserver);
+
+      
 
     }
   }
+
+
+
 }

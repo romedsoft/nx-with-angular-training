@@ -21,7 +21,7 @@ import { UsersListComponent } from './pages/users/users-list/users-list.componen
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-details.component';
-import { UsersModule } from '@romedsoft/users';
+import { AuthService, UsersModule } from '@romedsoft/users';
 
 @NgModule({
     declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent, UsersListComponent, UserFormComponent, OrdersListComponent, OrdersDetailsComponent],
@@ -36,7 +36,7 @@ import { UsersModule } from '@romedsoft/users';
       RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
       UsersModule
     ]
-    ,providers: [MessageService, ConfirmationService, ProductsService, CategoriesService],
+    ,providers: [MessageService, ConfirmationService, ProductsService, CategoriesService, AuthService],
     bootstrap: [AppComponent],
     exports: [
       ShellComponent,
