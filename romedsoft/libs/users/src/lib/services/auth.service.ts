@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { User, UserLogin } from '@romedsoft/users';
+import { UserLogin } from '@romedsoft/users';
 import { Observable } from 'rxjs';
 import { LocalstorageService } from './localstorage.service';
 
