@@ -32,6 +32,8 @@ const ORDER_STATUS : any = {
   providedIn: 'root'
 })
 export class OrdersService {
+
+
   ordersUrl = environment.apiHost + "orders";
   constructor(private http : HttpClient) { }
 
@@ -66,5 +68,14 @@ export class OrdersService {
           name : ORDER_STATUS[key].label
         }
     });
-}
+  }
+
+  getTotalOrders() {
+    return this.http.get(this.ordersUrl + "/get/count");
+  } 
+
+  getTotalSales() {
+    return this.http.get(this.ordersUrl + "/get/totalsales");
+  }
+
 }

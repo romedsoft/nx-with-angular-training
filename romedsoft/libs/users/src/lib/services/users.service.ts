@@ -7,10 +7,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService { 
-  
+export class UsersService {
+
   usersUrl = environment.apiHost + "users";
   constructor(private http : HttpClient) { }
+
+  getTotalUsers() {
+    return this.http.get(this.usersUrl + "/get/count");
+  } 
 
   getUsers() : Observable<Array<User>>  {
     return this.http.get<Array<User>>(this.usersUrl);

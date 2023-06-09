@@ -8,8 +8,15 @@ import { environment } from  '@env/environment';
   providedIn: 'root'
 })
 export class ProductsService {
+ 
   productsUrl = environment.apiHost + "products";
   constructor(private http : HttpClient) { }
+
+
+  getTotalProducts() {
+    return this.http.get(this.productsUrl + "/get/count");
+  }
+
 
   getProducts() : Observable<Array<Product>>  {
      return this.http.get<Array<Product>>(this.productsUrl);
