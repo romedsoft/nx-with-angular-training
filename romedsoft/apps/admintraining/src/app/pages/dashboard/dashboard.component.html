@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+<div class="admin-page">
+    <p-card header="Dashboard" subheader="Last updates">
+        <div class="grid">
+            <div class="col-3">
+                <admin-dashboard-item styleClass="d-orders" itemNumber="50" [itemName]="'Orders'"></admin-dashboard-item>
+            </div>
+            <div class="col-3">
+                <admin-dashboard-item styleClass="d-products" itemNumber="20" [itemName]="'Products'"></admin-dashboard-item>
+            </div>
+            <div class="col-3">
+                <admin-dashboard-item styleClass="d-users" itemNumber="8" [itemName]="'Users'"></admin-dashboard-item>
+            </div>
+            <div class="col-3">
+                <admin-dashboard-item styleClass="d-totalsales" itemNumber="{{ 120.50 | currency}}" [itemName]="'Total Sales'"></admin-dashboard-item>
+            </div>
+        </div>
+    </p-card>
+</div>

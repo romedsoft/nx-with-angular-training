@@ -22,14 +22,17 @@ import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-details.component';
 import { AuthService, UsersModule, JwtInterceptor } from '@romedsoft/users';
+import { DashboardItemComponent } from './components/dashboard-item/dashboard-item.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent, UsersListComponent, UserFormComponent, OrdersListComponent, OrdersDetailsComponent],
+    declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent, UsersListComponent, UserFormComponent, OrdersListComponent, OrdersDetailsComponent, DashboardItemComponent],
     imports: 
     [
       BrowserModule, 
       BrowserAnimationsModule,  
       FormsModule, 
+      CommonModule,
       ReactiveFormsModule, 
       HttpClientModule, 
       SharedModule, 
@@ -50,7 +53,8 @@ import { AuthService, UsersModule, JwtInterceptor } from '@romedsoft/users';
       UsersListComponent,
       UserFormComponent,
       OrdersListComponent,
-      OrdersDetailsComponent
+      OrdersDetailsComponent,
+      DashboardItemComponent
     ]
 })
 export class AppModule {}
