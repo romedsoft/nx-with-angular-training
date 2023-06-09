@@ -17,4 +17,7 @@ export class DashboardItemComponent {
   @Input()
   styleClass = '';
 
+  @Input()
+  icon = '';
+
 }

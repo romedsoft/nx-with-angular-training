@@ -2,16 +2,16 @@
     <p-card header="Dashboard" subheader="Last updates">
         <div class="grid">
             <div class="col-3">
-                <admin-dashboard-item styleClass="d-orders" itemNumber="50" [itemName]="'Orders'"></admin-dashboard-item>
+                <admin-dashboard-item styleClass="d-orders" itemNumber="50" [itemName]="'Orders'" icon="shopping-cart"></admin-dashboard-item>
             </div>
             <div class="col-3">
-                <admin-dashboard-item styleClass="d-products" itemNumber="20" [itemName]="'Products'"></admin-dashboard-item>
+                <admin-dashboard-item styleClass="d-products" itemNumber="20" [itemName]="'Products'" icon="briefcase"></admin-dashboard-item>
             </div>
             <div class="col-3">
-                <admin-dashboard-item styleClass="d-users" itemNumber="8" [itemName]="'Users'"></admin-dashboard-item>
+                <admin-dashboard-item styleClass="d-users" itemNumber="8" [itemName]="'Users'" icon="users"></admin-dashboard-item>
             </div>
             <div class="col-3">
-                <admin-dashboard-item styleClass="d-totalsales" itemNumber="{{ 120.50 | currency}}" [itemName]="'Total Sales'"></admin-dashboard-item>
+                <admin-dashboard-item styleClass="d-totalsales" itemNumber="{{ 120.50 | currency}}" [itemName]="'Total Sales'" icon="dollar"></admin-dashboard-item>
             </div>
         </div>
     </p-card>
