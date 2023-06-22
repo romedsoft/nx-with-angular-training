@@ -1,4 +1,5 @@
 //Base
+@import '~normalize.css/normalize.css';
 @import './base/colors.scss';
 @import './base/fonts.scss';
 @import './base/mixins.scss';
@@ -18,6 +19,15 @@
 //Shared
 @import './apps/ngshoptraining/shared/footer.scss';
 @import './apps/ngshoptraining/shared/header.scss';
+@import './apps/ngshoptraining/shared/nav.scss';
 
 //Libs
 @import './libs/ui/ui.scss';
+@import './libs/products/products-search.scss';
+
+.container{
+    width: 1200px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: var(--surface-100);
+}

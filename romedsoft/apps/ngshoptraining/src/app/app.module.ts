@@ -11,13 +11,15 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@romedsoft/ui';
 import { AccordionModule } from 'primeng/accordion';
+import { NavComponent } from './shared/nav/nav.component';
+import { ProductsModule } from '@romedsoft/products';
 
 
 @NgModule({
-    declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent],
+    declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent, NavComponent],
     imports: [BrowserModule
         , RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })
-        ,UiModule, AccordionModule, BrowserAnimationsModule
+        ,UiModule, AccordionModule, BrowserAnimationsModule, ProductsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
