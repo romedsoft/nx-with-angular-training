@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { appRoutes } from './app.routes';
 
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -24,6 +22,7 @@ import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-det
 import { AuthService, UsersModule, JwtInterceptor } from '@romedsoft/users';
 import { DashboardItemComponent } from './components/dashboard-item/dashboard-item.component';
 import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
     declarations: [AppComponent, ShellComponent, SidebarComponent, DashboardComponent, CategoriesComponent, CategoryFormComponent, ProductsListComponent, ProductFormComponent, UsersListComponent, UserFormComponent, OrdersListComponent, OrdersDetailsComponent, DashboardItemComponent],
@@ -36,7 +35,7 @@ import { CommonModule } from '@angular/common';
       ReactiveFormsModule, 
       HttpClientModule, 
       SharedModule, 
-      RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+      AppRoutingModule,
       UsersModule
     ]
     ,providers: [MessageService, ConfirmationService, ProductsService, CategoriesService, AuthService

@@ -10,10 +10,6 @@ import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailsComponent } from './pages/orders/orders-details/orders-details.component';
 import { AdminGuard, AuthGuard } from '@romedsoft/users';
-import { inject } from '@angular/core';
-
-
-
 
 export const appRoutes: Route[] = [
     {
@@ -22,7 +18,7 @@ export const appRoutes: Route[] = [
         component : ShellComponent,
         children : [
             {
-                path: 'dashboard',
+                path: '',
                 component: DashboardComponent  
             }  ,
             {
@@ -71,6 +67,10 @@ export const appRoutes: Route[] = [
                 component: OrdersDetailsComponent  
             }
         ]
+    },
+    {
+        path: '**',
+        redirectTo : '',
+        pathMatch: 'full'
     }
-
 ];
