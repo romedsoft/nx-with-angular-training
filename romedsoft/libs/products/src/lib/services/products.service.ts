@@ -22,6 +22,11 @@ export class ProductsService {
      return this.http.get<Array<Product>>(this.productsUrl);
   }
 
+  getFeaturedProducts(count : number) : Observable<Array<Product>>  {
+    return this.http.get<Array<Product>>(this.productsUrl+ "/get/featured/" + count);
+ }
+
+
   createProduct(productData : FormData) : Observable<Product> {
     return this.http.post<Product>(this.productsUrl, productData);
   }

@@ -8,6 +8,7 @@
 
     .category{
         min-height: 100px;
+        cursor: pointer;
         border-radius: 14px;
         text-align: center;
         display: flex;
@@ -24,7 +25,7 @@
         }
 
         &-name{
-            font-size: 1.2em;
+            font-size: 1em;
         }
     }
 }
