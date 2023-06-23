@@ -14,13 +14,18 @@ import { AccordionModule } from 'primeng/accordion';
 import { NavComponent } from './shared/nav/nav.component';
 import { ProductsModule } from '@romedsoft/products';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
     declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent, NavComponent],
     imports: [BrowserModule
         , RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' })
-        ,UiModule, AccordionModule, BrowserAnimationsModule, ProductsModule, SharedModule
+        ,UiModule, AccordionModule,
+         BrowserAnimationsModule, 
+         ProductsModule, 
+         SharedModule,
+         HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
